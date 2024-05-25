@@ -1,5 +1,5 @@
 d3.json("data.json").then(function(data) {
-    const tree = d3.tree().size([800, 600]);
+    const tree = d3.tree().size([1000, 800]);
 
     // 自定义 separation 函数,增大节点间的垂直间距
     tree.separation((a, b) => {
@@ -12,14 +12,14 @@ d3.json("data.json").then(function(data) {
 
     const svg = d3.select("body")
         .append("svg")
-        .attr("width", 800)
-        .attr("height", 600);
+        .attr("width", 1400)
+        .attr("height", 1000);
 
     const node = svg.selectAll(".node")
         .data(layout.descendants())
         .enter().append("g")
         .attr("class", "node")
-        .attr("transform", d => `translate(${d.y},${d.x})`);
+        .attr("transform", d => `translate(${d.y + 100},${d.x})`);
 
     node.append("circle")
         .attr("r", 15)
@@ -54,7 +54,7 @@ d3.json("data.json").then(function(data) {
         .enter().append("path")
         .attr("class", "link")
         .attr("d", d3.linkVertical()
-            .x(d => d.y)
+            .x(d => d.y + 100)
             .y(d => d.x))
         .attr("fill", "none")
         .attr("stroke", "#999")
