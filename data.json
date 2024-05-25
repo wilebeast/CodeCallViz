@@ -1,0 +1,35 @@
+{
+  "name": "main",
+  "parameters": [],
+  "children": [
+    {
+      "name": "function1",
+      "parameters": ["param1", "param2"],
+      "results": ["result1", "result2"],
+      "children": [
+        {
+          "name": "function3",
+          "parameters": ["param3", "param4"],
+          "results": ["result1", "result2"]
+        },
+        {
+          "name": "function4",
+          "parameters": ["param5"],
+          "results": ["result1", "result2"]
+        }
+      ]
+    },
+    {
+      "name": "function2",
+      "parameters": ["param6", "param7", "param8"],
+      "results": ["result1", "result2"],
+      "children": [
+        {
+          "name": "function5",
+          "parameters": ["param9"],
+          "results": ["result1", "result2"]
+        }
+      ]
+    }
+  ]
+}
