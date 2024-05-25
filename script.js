@@ -38,18 +38,19 @@ d3.json("data.json").then(function(data) {
         .attr("dy", -14)
         .text(d => d.data.name);
 
-    // 添加 parameters 和 results 容器
+    // 检查 parameters 属性是否存在
     node.append("text")
         .attr("dx", -10)
         .attr("dy", 4)
-        .text(d => `Parameters: ${d.data.parameters.join(', ')}`)
+        .text(d => d.data.parameters ? Object.values(d.data.parameters).join(', ') : "")
         .attr("font-size", 12)
         .attr("fill", "#666");
 
+    // 检查 results 属性是否存在
     node.append("text")
         .attr("dx", -10)
         .attr("dy", 20)
-        .text(d => `Results: ${d.data.results.join(', ')}`)
+        .text(d => d.data.results ? Object.values(d.data.results).join(', ') : "")
         .attr("font-size", 12)
         .attr("fill", "#666");
 
@@ -63,5 +64,5 @@ d3.json("data.json").then(function(data) {
         .attr("fill", "none")
         .attr("stroke", "#999")
         .attr("stroke-width", 2)
-        .attr("marker-end", "url(#arrowhead)"); // 添加箭头
+        .attr("marker-end", "url(#arrowhead)");
 });
