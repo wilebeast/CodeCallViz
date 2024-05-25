@@ -8,7 +8,6 @@ d3.json("data.json").then(function(data) {
         .attr("width", 800)
         .attr("height", 500);
 
-    // 添加箭头定义
     svg.append("defs")
         .append("marker")
         .attr("id", "arrowhead")
@@ -38,19 +37,19 @@ d3.json("data.json").then(function(data) {
         .attr("dy", -14)
         .text(d => d.data.name);
 
-    // 检查 parameters 属性是否存在
+    // 添加 parameters 容器
     node.append("text")
         .attr("dx", -10)
         .attr("dy", 4)
-        .text(d => d.data.parameters ? Object.values(d.data.parameters).join(', ') : "")
+        .text(d => d.data.parameters ? `Parameters: ${JSON.stringify(d.data.parameters)}` : "")
         .attr("font-size", 12)
         .attr("fill", "#666");
 
-    // 检查 results 属性是否存在
+    // 添加 results 容器
     node.append("text")
         .attr("dx", -10)
         .attr("dy", 20)
-        .text(d => d.data.results ? Object.values(d.data.results).join(', ') : "")
+        .text(d => d.data.results ? `Results: ${JSON.stringify(d.data.results)}` : "")
         .attr("font-size", 12)
         .attr("fill", "#666");
 
