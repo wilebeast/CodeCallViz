@@ -8,6 +8,7 @@ d3.json("data.json").then(function(data) {
         .attr("width", 800)
         .attr("height", 500);
 
+    // 添加箭头定义
     svg.append("defs")
         .append("marker")
         .attr("id", "arrowhead")
@@ -37,15 +38,20 @@ d3.json("data.json").then(function(data) {
         .attr("dy", -14)
         .text(d => d.data.name);
 
-    // 添加 parameters 容器
+    // 添加 parameters 和 results 容器
     node.append("text")
         .attr("dx", -10)
         .attr("dy", 4)
-        .text(d => `Parameters: ${d.data.parameters}`)
+        .text(d => `Parameters: ${d.data.parameters.join(', ')}`)
         .attr("font-size", 12)
         .attr("fill", "#666");
 
-
+    node.append("text")
+        .attr("dx", -10)
+        .attr("dy", 20)
+        .text(d => `Results: ${d.data.results.join(', ')}`)
+        .attr("font-size", 12)
+        .attr("fill", "#666");
 
     const link = svg.selectAll(".link")
         .data(layout.links())
@@ -57,5 +63,5 @@ d3.json("data.json").then(function(data) {
         .attr("fill", "none")
         .attr("stroke", "#999")
         .attr("stroke-width", 2)
-        .attr("marker-end", "url(#arrowhead)");
+        .attr("marker-end", "url(#arrowhead)"); // 添加箭头
 });

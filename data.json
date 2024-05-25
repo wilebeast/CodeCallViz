@@ -1,6 +1,7 @@
 {
   "name": "main",
   "parameters": [],
+  "results": ["result1", "result2"],
   "children": [
     {
       "name": "function1",
